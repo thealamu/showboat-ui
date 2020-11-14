@@ -1,6 +1,7 @@
 import './App.css';
 import Landing from './Landing.js'
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
 	const theme = createMuiTheme({
@@ -15,9 +16,12 @@ function App() {
 	})
 
   return (
-	 <ThemeProvider theme={theme}> 
-		  <Landing />
-     </ThemeProvider>
+	  <>
+		<CssBaseline />
+		<ThemeProvider theme={theme}> 
+			  <Landing />
+		</ThemeProvider>
+	  </>
   );
 }
 
