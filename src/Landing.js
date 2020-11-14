@@ -1,8 +1,6 @@
 import React from 'react'
 import './Landing.css'
-import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 
 export default function Landing() {
 	return (
@@ -13,7 +11,7 @@ export default function Landing() {
 					<Button variant="contained" size="small" color="secondary">Create an Account</Button>
 				</div>
 				<div id="headercontainer">
-					<img id="appicon" src={window.location.origin + '/assets/portfolio.svg'} />
+					<img id="appicon" alt="App icon" src={window.location.origin + '/assets/portfolio.svg'} />
 					<div id="headercharge">
 						<h1> Showboat </h1>
 						<p> You create amazing stuff,<br/> build a portfolio page to showcase them. </p>
@@ -24,7 +22,7 @@ export default function Landing() {
 		    <section id="desc">
 			</section>
 		    <section id="intro">
-				<img id="introimg" src={window.location.origin + '/assets/interview.svg'} />
+				<img id="introimg" alt="Interview" src={window.location.origin + '/assets/interview.svg'} />
 				<div id="intromessage"> 
 					<p id="charge">Get that job you've <br/> always wanted.</p>
 					<p id="explain"> Keep your portfolio up to date <br/> Share with recruiters</p>
@@ -32,7 +30,7 @@ export default function Landing() {
 				</div>
 			</section>
 			<footer>
-				<img src={window.location.origin + '/assets/portfolio.svg'} />
+				<img alt="App icon" src={window.location.origin + '/assets/portfolio.svg'} />
 				<p>  © 2020, <a href="https://thealamu.tech">Faithfulness Alamu</a>. All rights reserved. </p>
 			</footer>
 		</>
