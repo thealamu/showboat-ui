@@ -1,3 +1,50 @@
+footer {
+	background-color: #cfd8dc;
+	margin: 0;
+	width: 100%;
+	padding: 16px;
+	align-items: center;
+	padding-left: 32px;
+}
+
+footer img {
+	width: 128px;
+	height: 128px;
+}
+
+footer p {
+	font-weight: 400;
+}
+
+#intro {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8% 2%;
+	background-color: #EEEEEE;
+}
+
+#introimg {
+	width: 58vw;
+}
+
+#intromessage {
+	width: 42vw;
+	text-align: center;
+}
+
+#intromessage #charge {
+	font-size: 3.5em;
+	margin: 0;
+	font-weight: 600;
+}
+
+#intromessage #explain {
+	margin: 16;
+	font-size: 1.5em;
+	font-weight: 300;
+}
+
 #headerlogin {
 	margin-right: 16px;
 }
@@ -23,25 +70,6 @@
 	margin-top: 48px;
 }
 
-@media only screen and (max-width: 600px) {
-	#headercharge h1 {
-		font-size: 4em;
-		margin: 0;
-		color: white;
-	}
-
-	#headercharge p {
-		margin: 0;
-		font-size: 1.2em;
-		color: white;
-	}
-
-	#headercharge button {
-		margin-top: 24px;
-	}	
-}
-
-
 #appicon {
 	width: 24%;
 	height: 24%;
@@ -64,3 +92,45 @@
 #headercontainer {
 	margin: 48px;
 }
+
+
+@media only screen and (max-width: 600px) {
+	#intro {
+		display: block;
+		padding-left: 0%;
+		padding-right: 0%;
+	}
+
+	#introimg {
+		width: 100vw;
+	}
+
+	#intromessage {
+		width: 100vw;
+	}
+
+
+	#intromessage #charge {
+		font-size: 2.0em;
+		margin-top: 4%;
+	}
+
+	#intromessage #explain {
+		margin: 16;
+		font-size: 1.2em;
+	}
+
+	#headercharge h1 {
+		font-size: 4em;
+	}
+
+	#headercharge p {
+		font-size: 1.2em;
+	}
+
+	#headercharge button {
+		margin-top: 32px;
+	}
+}
+
+
