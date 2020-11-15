@@ -1,7 +1,9 @@
-import './App.css';
+import './App.css'
 import Landing from './Landing.js'
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { BrowserRouter, Route } from 'react-router-dom'
+import Portfolio from './Portfolio.js'
 
 function App() {
 	const theme = createMuiTheme({
@@ -19,7 +21,10 @@ function App() {
 	  <>
 		<CssBaseline />
 		<ThemeProvider theme={theme}> 
-			  <Landing />
+			<BrowserRouter>
+	  			  <Route path="/" exact component={Landing} />
+	  			  <Route path="/:uid" exact component={Portfolio} />
+		   </BrowserRouter>
 		</ThemeProvider>
 	  </>
   );
