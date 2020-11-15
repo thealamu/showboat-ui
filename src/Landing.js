@@ -30,7 +30,6 @@ export default function Landing() {
 				</div>
 			</section>
 			<footer>
-				<img alt="App icon" src={window.location.origin + '/assets/portfolio.svg'} />
 				<p>  © 2020, <a href="https://thealamu.tech">Faithfulness Alamu</a>. All rights reserved. </p>
 			</footer>
 		</>
