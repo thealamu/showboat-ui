@@ -2,6 +2,7 @@ import React from "react";
 import "./Landing.css";
 import Button from "@material-ui/core/Button";
 import AuthDialog from "./AuthDialog.js";
+import { checkCookie } from "./Cookies.js";
 
 export default function Landing() {
   const [authOpen, setAuthOpen] = React.useState(false);
@@ -14,21 +15,40 @@ export default function Landing() {
     setAuthOpen(false);
   };
 
+  const isLoggedIn = () => checkCookie("session");
+
+  const toPortfolio = () => {};
+
+  console.log(isLoggedIn());
+
   return (
     <>
       <section id="header">
         <div className="right">
-          <Button onClick={openAuth} id="headerlogin" color="secondary">
-            Login
-          </Button>
-          <Button
-            onClick={openAuth}
-            variant="contained"
-            size="small"
-            color="secondary"
-          >
-            Create an Account
-          </Button>
+          {isLoggedIn() ? (
+            <Button
+              onClick={toPortfolio}
+              variant="outlined"
+              size="large"
+              color="secondary"
+            >
+              Go to Portfolio
+            </Button>
+          ) : (
+            <div>
+              <Button onClick={openAuth} id="headerlogin" color="secondary">
+                Login
+              </Button>
+              <Button
+                onClick={openAuth}
+                variant="contained"
+                size="small"
+                color="secondary"
+              >
+                Create an Account
+              </Button>
+            </div>
+          )}
         </div>
         <div id="headercontainer">
           <img
@@ -39,7 +59,6 @@ export default function Landing() {
           <div id="headercharge">
             <h1> Showboat </h1>
             <p>
-              {" "}
               You create amazing stuff,
               <br /> build a portfolio page to showcase them.{" "}
             </p>

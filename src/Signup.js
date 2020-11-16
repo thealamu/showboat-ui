@@ -77,7 +77,7 @@ export default function Signup(props) {
     if (resp.ok) {
       let data = await resp.json();
       //save session token
-      setCookie("session", data.token, 0);
+      setCookie("session", data.token, 7);
       //navigate to user portfolio
       window.location.assign(window.location.origin + `/${username}`);
     } else {
