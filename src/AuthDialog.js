@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import './AuthDialog.css'
 import Signup from './Signup.js'
+import Login from './Login.js'
 
 function TabPanel(props) {
 	  const { children, value, index, ...other } = props;
@@ -47,6 +48,7 @@ export default function AuthDialog(prop) {
 			      <Signup />					 
 		      </TabPanel>
 		      <TabPanel value={value} index={1}>
+				  <Login />
 		      </TabPanel>
 			</DialogContent>
 		</Dialog>
