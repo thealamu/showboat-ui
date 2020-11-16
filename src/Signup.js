@@ -65,6 +65,7 @@ export default function Signup(props) {
       password: password,
     };
 
+    //make the request
     console.log(`Signing ${payload.userid} up`);
     let resp = await fetch(Api.BackendAddr + `/signup`, {
       method: "POST",
@@ -75,14 +76,18 @@ export default function Signup(props) {
     });
     if (resp.ok) {
       let data = await resp.json();
-      console.log(data.token);
+      //save session token
       setCookie("session", data.token, 0);
+      //navigate to user portfolio
+      window.location.assign(window.location.origin + `/${username}`);
     } else {
+      //something serious happened
       alert("Something went wrong");
     }
   };
 
   const createAccount = () => {
+    //do validations
     if (username === "") {
       setUsernameError(true);
       setUsernameHelperText("Username is required");
