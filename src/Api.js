@@ -1,5 +1,5 @@
 const Api = {
-  BackendAddr: "http://localhost:8080",
+	BackendAddr: "https://showboat-jl2oihj43a-uc.a.run.app",
 };
 
 export default Api;
