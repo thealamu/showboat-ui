@@ -1,16 +1,13 @@
-.signupinput {
-  margin-bottom: 4%;
-}
-
 .signupcontainer {
   padding: 8% 10% 0 10%;
+  text-align: center;
 }
 
 .signupcontainer Button {
   width: 100%;
 }
 
-.signupcontainer p {
+.littletext {
   font-weight: 300;
   font-size: 0.8em;
 }

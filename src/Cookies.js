@@ -21,5 +21,5 @@ export function getCookie(cname) {
 }
 
 export function checkCookie(cname) {
-  return getCookie(cname) !== ""
+  return getCookie(cname) !== "";
 }
