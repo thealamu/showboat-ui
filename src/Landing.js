@@ -2,7 +2,8 @@ import React from "react";
 import "./Landing.css";
 import Button from "@material-ui/core/Button";
 import AuthDialog from "./AuthDialog.js";
-import { setCookie, checkCookie } from "./Cookies.js";
+import { setCookie, checkCookie, getCookie } from "./Cookies.js";
+import Api from "./Api.js";
 
 export default function Landing() {
   const [authOpen, setAuthOpen] = React.useState(false);
@@ -17,7 +18,23 @@ export default function Landing() {
 
   const isLoggedIn = () => checkCookie("session");
 
-  const toPortfolio = () => {};
+  const toPortfolio = async () => {
+    //ask the server for the username
+    let url = Api.BackendAddr + "/i/user";
+    let resp = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${getCookie("session")}`,
+      },
+    });
+    if (!resp.ok) {
+      alert("something bad happened");
+      return;
+    }
+
+    let payload = await resp.json();
+    //navigate to user portfolio
+    window.location.assign(window.location.origin + `/${payload.userid}`);
+  };
 
   const logout = () => {
     setCookie("session", "", -1);
