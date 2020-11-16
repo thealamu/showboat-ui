@@ -2,7 +2,7 @@ import React from "react";
 import "./Landing.css";
 import Button from "@material-ui/core/Button";
 import AuthDialog from "./AuthDialog.js";
-import { checkCookie } from "./Cookies.js";
+import { setCookie, checkCookie } from "./Cookies.js";
 
 export default function Landing() {
   const [authOpen, setAuthOpen] = React.useState(false);
@@ -19,21 +19,35 @@ export default function Landing() {
 
   const toPortfolio = () => {};
 
-  console.log(isLoggedIn());
+  const logout = () => {
+    setCookie("session", "", -1);
+    window.location.reload(true);
+  };
 
   return (
     <>
       <section id="header">
         <div className="right">
           {isLoggedIn() ? (
-            <Button
-              onClick={toPortfolio}
-              variant="outlined"
-              size="large"
-              color="secondary"
-            >
-              Go to Portfolio
-            </Button>
+            <div>
+              <Button
+                id="headerlogout"
+                onClick={logout}
+                variant="text"
+                size="large"
+                color="secondary"
+              >
+                Logout
+              </Button>
+              <Button
+                onClick={toPortfolio}
+                variant="contained"
+                size="large"
+                color="secondary"
+              >
+                Portfolio
+              </Button>
+            </div>
           ) : (
             <div>
               <Button onClick={openAuth} id="headerlogin" color="secondary">
@@ -62,14 +76,25 @@ export default function Landing() {
               You create amazing stuff,
               <br /> build a portfolio page to showcase them.{" "}
             </p>
-            <Button
-              onClick={openAuth}
-              variant="contained"
-              size="large"
-              color="secondary"
-            >
-              Get started
-            </Button>
+            {isLoggedIn() ? (
+              <Button
+                onClick={toPortfolio}
+                variant="outlined"
+                size="large"
+                color="secondary"
+              >
+                Go to Portfolio
+              </Button>
+            ) : (
+              <Button
+                onClick={openAuth}
+                variant="contained"
+                size="large"
+                color="secondary"
+              >
+                Get started
+              </Button>
+            )}
           </div>
         </div>
       </section>
@@ -88,9 +113,20 @@ export default function Landing() {
             {" "}
             Keep your portfolio up to date <br /> Share with recruiters
           </p>
-          <Button onClick={openAuth} variant="contained" color="secondary">
-            Create an Account
-          </Button>
+          {isLoggedIn() ? (
+            <Button
+              onClick={toPortfolio}
+              variant="contained"
+              size="large"
+              color="secondary"
+            >
+              Go to Portfolio
+            </Button>
+          ) : (
+            <Button onClick={openAuth} variant="contained" color="secondary">
+              Create an Account
+            </Button>
+          )}
         </div>
       </section>
       <footer>
