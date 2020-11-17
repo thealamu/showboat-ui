@@ -6,6 +6,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { isValidUsername } from "./Auth.js";
 import Api from "./Api.js";
 import { setCookie } from "./Cookies.js";
+import { useHistory } from "react-router-dom";
 
 function LoginInput(props) {
   const { label, value, ...others } = props;
@@ -23,6 +24,7 @@ function LoginInput(props) {
 }
 
 export default function Login(props) {
+  const history = useHistory();
   const [username, setUsername] = React.useState("");
   const [usernameError, setUsernameError] = React.useState(false);
   const [usernameHelperText, setUsernameHelperText] = React.useState("");
@@ -53,7 +55,8 @@ export default function Login(props) {
       //save session token
       setCookie("session", data.token, 7);
       //navigate to user portfolio
-      window.location.assign(window.location.origin + `/${username}`);
+      history.push(`/${username}`);
+      //window.location.assign(window.location.origin + `/${username}`);
     } else {
       //unauthorized
       setUsernameError(true);

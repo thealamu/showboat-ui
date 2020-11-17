@@ -4,8 +4,10 @@ import Button from "@material-ui/core/Button";
 import AuthDialog from "./AuthDialog.js";
 import { setCookie, checkCookie, getCookie } from "./Cookies.js";
 import Api from "./Api.js";
+import { useHistory } from "react-router-dom";
 
 export default function Landing() {
+  const history = useHistory();
   const [authOpen, setAuthOpen] = React.useState(false);
 
   let openAuth = () => {
@@ -33,7 +35,8 @@ export default function Landing() {
 
     let payload = await resp.json();
     //navigate to user portfolio
-    window.location.assign(window.location.origin + `/${payload.userid}`);
+    history.push(`/${payload.userid}`);
+    //window.location.assign(window.location.origin + `/${payload.userid}`);
   };
 
   const logout = () => {

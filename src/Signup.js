@@ -6,8 +6,10 @@ import Api from "./Api.js";
 import { setCookie } from "./Cookies.js";
 import SignupInput from "./SignupInput.js";
 import { isValidPassword, isValidUsername } from "./Auth.js";
+import { useHistory } from "react-router-dom";
 
 export default function Signup(props) {
+  const history = useHistory();
   const [username, setUsername] = React.useState("");
   const [usernameError, setUsernameError] = React.useState(false);
   const [usernameHelperText, setUsernameHelperText] = React.useState("");
@@ -79,7 +81,8 @@ export default function Signup(props) {
       //save session token
       setCookie("session", data.token, 7);
       //navigate to user portfolio
-      window.location.assign(window.location.origin + `/${username}`);
+      history.push(`/${username}`);
+      //window.location.assign(window.location.origin + `/${username}`);
     } else {
       //something serious happened
       alert("Something went wrong");
