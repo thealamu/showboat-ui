@@ -1,5 +1,5 @@
 const Api = {
-	BackendAddr: "https://showboat-jl2oihj43a-uc.a.run.app",
+	BackendAddr: process.env.REACT_APP_BACKEND,
 };
 
 export default Api;
