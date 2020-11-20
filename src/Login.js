@@ -55,7 +55,6 @@ export default function Login(props) {
           resp
             .json()
             .then((data) => {
-              console.log(data);
               //save session token
               setCookie("session", data.token, 7);
               //navigate to user portfolio
