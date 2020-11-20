@@ -52,12 +52,19 @@ export default function Login(props) {
     })
       .then((resp) => {
         if (resp.ok) {
-          let data = resp.json();
-          //save session token
-          setCookie("session", data.token, 7);
-          //navigate to user portfolio
-          history.push(`/${username}`);
-          //window.location.assign(window.location.origin + `/${username}`);
+          resp
+            .json()
+            .then((data) => {
+              console.log(data);
+              //save session token
+              setCookie("session", data.token, 7);
+              //navigate to user portfolio
+              history.push(`/${username}`);
+              //window.location.assign(window.location.origin + `/${username}`);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         } else {
           //unauthorized
           setUsernameError(true);
