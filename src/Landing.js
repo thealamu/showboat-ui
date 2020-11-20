@@ -9,7 +9,6 @@ import { useHistory } from "react-router-dom";
 export default function Landing() {
   const history = useHistory();
   const [authOpen, setAuthOpen] = React.useState(false);
-
   let openAuth = () => {
     setAuthOpen(true);
   };

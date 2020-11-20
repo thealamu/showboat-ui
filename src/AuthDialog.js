@@ -32,7 +32,7 @@ function TabPanel(props) {
 export default function AuthDialog(prop) {
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (newValue) => {
     setValue(newValue);
   };
 
