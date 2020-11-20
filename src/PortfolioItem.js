@@ -86,7 +86,7 @@ export default function PortfolioItem({ item }) {
       </Menu>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography variant="body2" paragraph>
+          <Typography id="cardcontent" variant="body2" paragraph>
             {item.Content}
           </Typography>
         </CardContent>

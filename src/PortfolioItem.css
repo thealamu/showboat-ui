@@ -1,3 +1,7 @@
+#cardcontent {
+  font-size: 1.2em;
+}
+
 #more-for-owner {
   margin-left: auto;
 }
@@ -14,4 +18,10 @@
 
 .cardroot {
   margin: 8%;
+}
+
+@media only screen and (max-width: 600px) {
+  .cardroot {
+    margin: 16% 2%;
+  }
 }
