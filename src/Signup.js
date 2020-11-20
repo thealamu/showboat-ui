@@ -78,15 +78,18 @@ export default function Signup(props) {
     })
       .then((resp) => {
         if (resp.ok) {
-          let data = resp.json();
-          //save session token
-          setCookie("session", data.token, 7);
-          //navigate to user portfolio
-          history.push(`/${username}`);
-          //window.location.assign(window.location.origin + `/${username}`);
-        } else {
-          //something serious happened
-          alert("Something went wrong");
+          resp
+            .json()
+            .then((data) => {
+              //save session token
+              setCookie("session", data.token, 7);
+              //navigate to user portfolio
+              history.push(`/${username}`);
+            })
+            .catch((err) => {
+              //something serious happened
+              alert("Something went wrong");
+            });
         }
       })
       .catch((err) => {
