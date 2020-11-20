@@ -3,6 +3,7 @@ import Api from "./Api.js";
 import "./Portfolio.css";
 import PortfolioItem from "./PortfolioItem";
 import Container from "@material-ui/core/Container";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default class Portfolio extends React.Component {
   constructor(props) {
@@ -39,8 +40,17 @@ export default class Portfolio extends React.Component {
 
   render() {
     if (this.state.portfolio == null) {
+      //still loading
+      return (
+        <>
+          <CircularProgress />
+        </>
+      );
+    }
+
+    if (this.state.portfolio.Items == null) {
       //nothing to render
-      return <></>;
+      return <>You have no portfolio item</>;
     }
 
     let portfolio = this.state.portfolio.Items.map((item) => {
