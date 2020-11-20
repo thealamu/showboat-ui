@@ -43,27 +43,33 @@ export default function Login(props) {
 
     //make the request
     console.log(`Logging ${payload.userid} in`);
-    let resp = await fetch(Api.BackendAddr + `/login`, {
+    await fetch(Api.BackendAddr + `/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(payload),
-    });
-    if (resp.ok) {
-      let data = await resp.json();
-      //save session token
-      setCookie("session", data.token, 7);
-      //navigate to user portfolio
-      history.push(`/${username}`);
-      //window.location.assign(window.location.origin + `/${username}`);
-    } else {
-      //unauthorized
-      setUsernameError(true);
-      setPasswordError(true);
-      setPasswordHelperText("username or password is invalid");
-      setIsLoading(false);
-    }
+    })
+      .then((resp) => {
+        if (resp.ok) {
+          let data = resp.json();
+          //save session token
+          setCookie("session", data.token, 7);
+          //navigate to user portfolio
+          history.push(`/${username}`);
+          //window.location.assign(window.location.origin + `/${username}`);
+        } else {
+          //unauthorized
+          setUsernameError(true);
+          setPasswordError(true);
+          setPasswordHelperText("username or password is invalid");
+          setIsLoading(false);
+        }
+      })
+      .catch((err) => {
+        alert(err);
+        setIsLoading(false);
+      });
   };
 
   const updateUsername = (e) => {

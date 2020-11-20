@@ -69,24 +69,30 @@ export default function Signup(props) {
 
     //make the request
     console.log(`Signing ${payload.userid} up`);
-    let resp = await fetch(Api.BackendAddr + `/signup`, {
+    await fetch(Api.BackendAddr + `/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(payload),
-    });
-    if (resp.ok) {
-      let data = await resp.json();
-      //save session token
-      setCookie("session", data.token, 7);
-      //navigate to user portfolio
-      history.push(`/${username}`);
-      //window.location.assign(window.location.origin + `/${username}`);
-    } else {
-      //something serious happened
-      alert("Something went wrong");
-    }
+    })
+      .then((resp) => {
+        if (resp.ok) {
+          let data = resp.json();
+          //save session token
+          setCookie("session", data.token, 7);
+          //navigate to user portfolio
+          history.push(`/${username}`);
+          //window.location.assign(window.location.origin + `/${username}`);
+        } else {
+          //something serious happened
+          alert("Something went wrong");
+        }
+      })
+      .catch((err) => {
+        alert(err);
+        setIsLoading(false);
+      });
   };
 
   const createAccount = () => {
