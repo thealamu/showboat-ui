@@ -8,8 +8,11 @@ import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import "./PortfolioItem.css";
 import { makeStyles } from "@material-ui/core/styles";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles((theme) => ({
   expand: {
@@ -27,10 +30,18 @@ export default function PortfolioItem({ item }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <Card className="cardroot" key={item.Title}>
       <CardMedia class="media" image={item.HeaderImage}></CardMedia>
@@ -59,7 +70,20 @@ export default function PortfolioItem({ item }) {
         >
           <ExpandMoreIcon />
         </IconButton>
+        <IconButton onClick={handleMenuClick} id="more-for-owner">
+          <MoreVertIcon />
+        </IconButton>
       </CardActions>
+      <Menu
+        id="menu-for-owner"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
+      >
+        <MenuItem>Edit</MenuItem>
+        <MenuItem>Delete</MenuItem>
+      </Menu>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography variant="body2" paragraph>
