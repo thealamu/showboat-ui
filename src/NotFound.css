@@ -1,0 +1,15 @@
+#notfoundimage {
+  width: 50%;
+  opacity: 0.7;
+}
+
+#notfounddiv {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+@media only screen and (max-width: 600px) {
+  #notfoundimage {
+    width: 80%;
+  }
+}

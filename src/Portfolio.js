@@ -5,8 +5,9 @@ import PortfolioItem from "./PortfolioItem";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Empty from "./Empty.js";
+import { withRouter } from "react-router-dom";
 
-export default class Portfolio extends React.Component {
+class Portfolio extends React.Component {
   constructor(props) {
     super(props);
 
@@ -31,7 +32,8 @@ export default class Portfolio extends React.Component {
             });
           });
         } else {
-          alert(404);
+          console.log(this.props.history);
+          this.props.history.push("/404");
         }
       })
       .catch((err) => {
@@ -67,3 +69,5 @@ export default class Portfolio extends React.Component {
     return <>{portfolio}</>;
   }
 }
+
+export default withRouter(Portfolio);
